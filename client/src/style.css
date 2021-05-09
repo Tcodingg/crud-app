@@ -1,0 +1,10 @@
+.todo {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+.todoItems {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+}

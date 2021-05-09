@@ -27,7 +27,7 @@ export default function App() {
 	console.log(filter);
 
 	return (
-		<div style={style}>
+		<div className='todo'>
 			<label htmlFor=''>Todo</label>
 			<input
 				type='text'
@@ -39,7 +39,7 @@ export default function App() {
 			<div>
 				{todoList.map((item, index) => {
 					return (
-						<div style={styleTodos} key={index}>
+						<div className='todoItems' key={index}>
 							<h3>{item.todo_item}</h3>
 							<button onClick={() => handleDelete(item._id, index)}>
 								Delete
@@ -51,15 +51,3 @@ export default function App() {
 		</div>
 	);
 }
-
-const style = {
-	display: 'flex',
-	flexDirection: 'column',
-	justifyContent: 'center',
-	alignItems: 'center',
-};
-
-const styleTodos = {
-	display: 'grid',
-	gridTemplateColumns: '1fr 1fr',
-};
