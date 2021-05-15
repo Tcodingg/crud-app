@@ -18,7 +18,8 @@ mongoose.connect(
 		useUnifiedTopology: true,
 	}
 );
-//send the data into the database
+
+//send the data
 app.post('/', async (req, res) => {
 	const todoItem = req.body.todo;
 	const todo = new TodoModel({
@@ -27,13 +28,13 @@ app.post('/', async (req, res) => {
 
 	try {
 		await todo.save();
-		res.send('its working');
+		res.send('todo saved');
 	} catch (err) {
 		console.log(err);
 	}
 });
 
-// read/get data from the database
+// read/get data
 app.get('/read', (req, res) => {
 	TodoModel.find({}, (err, result) => {
 		if (err) {
@@ -43,11 +44,12 @@ app.get('/read', (req, res) => {
 	});
 });
 
+// delete data
 app.delete('/delete/:id', async (req, res) => {
 	const id = req.params.id;
 	await TodoModel.findByIdAndRemove(id).exec();
-	// console.log(id);
 	res.send(id);
+	// console.log(id);
 });
 
 app.listen(3001, () => console.log('server is running in 3001'));
